@@ -63,7 +63,7 @@ def scrape():
 
     # response = requests.get(featured_image_url, stream=True)
     # with open('img.png', 'wb') as out_file:
-    #     shutil.copyfileobj(response.raw, out_file)
+    # shutil.copyfileobj(response.raw, out_file)
 
 
     url = 'https://twitter.com/marswxreport?lang=en'
@@ -118,6 +118,7 @@ def scrape():
             "title": title,
             "img_url": image_link,
         }
+
         hemisphere_image_urls.append(post)
 
     all_data_from_scrape = {
@@ -127,12 +128,13 @@ def scrape():
         "News_title":news_title,
         "News_p":news_p
     }
+    db.posts.drop()
     db['posts'].insert(all_data_from_scrape)
     return all_data_from_scrape
 
 @app.route('/', methods=['POST','GET'])
 def getData():
-    
+
     data = db.posts.find()[0]
     
     return render_template('index.html', mars=data)
