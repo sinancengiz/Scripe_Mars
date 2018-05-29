@@ -1,0 +1,181 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="reset.css">
+  <title>Mars Mission!</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+
+
+  <style>
+	  		body {
+		  /* Put a 15-pixel margin at the bottom of the heading. */
+		  margin-bottom: 15px;
+		  /* Change the size of your font to 60 pixels high. */
+		  font-size: 60px;
+		  /* This will color the heading font white. */
+		  color: white;
+		  /* Align the text to the center of its enclosing element (e.g. div). */
+		  text-align: center;
+		  /* Underline the text. */
+		  text-decoration: underline;
+		  /* The background of the heading element will now be black. */
+		  background-color: black;
+		}
+
+		#header{
+			background: greenyellow;
+			color: brown;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			font-style: italic;
+		}
+
+		#scrape_bottun{
+			color:indianred;
+		}
+		
+		.information_texts{
+			font-family: fantasy;
+			font-size: 16px;
+		}
+
+		  img{
+				width: 90%;
+				margin: 10%;
+				background: white;
+				float: left;
+
+			}
+
+	 
+	  </style>
+
+</head>
+
+<style>
+	.all_body{
+			background: blue;
+	}
+</style>
+
+<body class="all_body">
+						<!--These col-md-3 columns go half wide when on a small screen-->
+		<div class="row">
+				<div class="col-sm-6 col-md-6" id="header">
+					<h1>Welcome to Mars</h1>
+				</div>
+				<div class="col-sm-6 col-md-6" id="scrape_bottun">
+					<button > Scrape Mars  </button>
+				</div>
+		</div>
+
+		<div class="row">
+
+			<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="information_texts">
+							<h2>{{ mars.News_title }}</h2>
+					</div>
+					<div>
+							<h2>{{ mars.News_p }}</h2>
+					</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="information_texts">
+							<h2>Current Weather Information in Mars</h2>
+					</div>
+					<div >
+							<h2>{{ mars.Mars_weather }}</h2>
+					</div>
+			</div>
+
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12" >
+				<h3>Planet Information</h3>
+				  <table border="1" class="dataframe" align="center">
+						  <thead>
+							<tr style="text-align: right;">
+							  <th></th>
+							  <th>Value</th>
+							</tr>
+							<tr>
+							  <th>Planet Data Type</th>
+							  <th></th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr>
+							  <th>Equatorial Diameter:</th>
+							  <td>6,792 km</td>
+							</tr>
+							<tr>
+							  <th>Polar Diameter:</th>
+							  <td>6,752 km</td>
+							</tr>
+							<tr>
+							  <th>Mass:</th>
+							  <td>6.42 x 10^23 kg (10.7% Earth)</td>
+							</tr>
+							<tr>
+							  <th>Moons:</th>
+							  <td>2 (Phobos &amp; Deimos)</td>
+							</tr>
+							<tr>
+							  <th>Orbit Distance:</th>
+							  <td>227,943,824 km (1.52 AU)</td>
+							</tr>
+							<tr>
+							  <th>Orbit Period:</th>
+							  <td>687 days (1.9 years)</td>
+							</tr>
+							<tr>
+							  <th>Surface Temperature:</th>
+							  <td>-153 to 20 �C</td>
+							</tr>
+							<tr>
+							  <th>First Record:</th>
+							  <td>2nd millennium BC</td>
+							</tr>
+							<tr>
+							  <th>Recorded By:</th>
+							  <td>Egyptian astronomers</td>
+							</tr>
+						  </tbody>
+						</table>
+		</div>
+
+		<div class="row">
+			<div class ="col-xs-12 col-sm-6 col-md-6">
+				<img class= "temp " src="{{ mars.list_of_hemisphere_image_urls[0]['img_url'] }}"  alt="Mountain View">
+				<h2>{{ mars.list_of_hemisphere_image_urls[0]["title"] }}</h2>
+			</div>
+
+			<div class ="col-xs-12 col-sm-6 col-md-6">
+				<img class= "temp " src="{{ mars.list_of_hemisphere_image_urls[1]['img_url'] }}"  alt="Mountain View">
+				<h2>{{ mars.list_of_hemisphere_image_urls[1]["title"] }}</h2>
+			</div>
+
+
+		</div>		
+
+
+		<div class="row">
+				<div class ="col-xs-12 col-sm-6 col-md-6">
+					<img class= "temp " src="{{ mars.list_of_hemisphere_image_urls[2]['img_url'] }}"  alt="Mountain View">
+					<h2>{{ mars.list_of_hemisphere_image_urls[2]["title"] }}</h2>
+				</div>
+	
+				<div class ="col-xs-12 col-sm-6 col-md-6">
+					<img class= "temp " src="{{ mars.list_of_hemisphere_image_urls[3]['img_url'] }}"  alt="Mountain View">
+					<h2>{{ mars.list_of_hemisphere_image_urls[3]["title"] }}</h2>
+				</div>
+	
+	
+			</div>
+
+</body>
+</html>
