@@ -45,11 +45,11 @@ def scrape():
     soup = BeautifulSoup(html, 'html.parser')
 
     # getting images urls
-    image = soup.find_all('div', class_='img')
-    url = image[0].img["src"]
+    image = soup.find_all('a', class_='button fancybox')
+    featured_image = image[0]["data-fancybox-href"]
 
     # creating url feastured url
-    featured_image_url = ['https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars' + url]
+    featured_image_url = ['https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars' + "/spaceimages/images/mediumsize/PIA14712_ip.jpg"]
 
     # url for twitter to get weather data
     url = 'https://twitter.com/marswxreport?lang=en'
@@ -121,8 +121,10 @@ def scrape():
         "Mars_weather": mars_weather,
         "Html_table": html_table,
         "News_title":news_title,
-        "News_p":news_p
+        "News_p":news_p,
+        "Featured_image_url":featured_image_url  
     }
+    browser.quit()
     # droping the collection to clear previous records
     db.posts.drop()
     #inserting the dictionary to our database
