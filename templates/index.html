@@ -35,7 +35,21 @@
 			
 		}
 
-	  img{
+		.second_row_headers{
+			color:yellowgreen;
+			margin-top:50px;
+		}
+
+		#information_table{
+			padding-left: 25%;
+			
+		}
+
+		#featured_image{
+			width: 50%;
+			border:salmon solid 4px;
+		}
+		.hemisphere_img{
 				width: 80%;
 				margin: 10%;
 				background: white;
@@ -58,7 +72,7 @@
 						<!--These col-md-3 columns go half wide when on a small screen-->
 		<div class="row">
 				<div class="col-sm-6 col-md-6" id="header">
-					<h1>Welcome to Home of Martians</h1>
+					<h1>Welcome to Mars</h1>
 				</div>
 				<div class="col-sm-6 col-md-6" id="scrape_bottun">
 					<button onclick="location.href='http://127.0.0.1:5000/scrape'" type="button" > Scrape Mars  </button>
@@ -71,7 +85,7 @@
 					<div class="information_texts">
 							<h2> {{ mars.News_title }}</h2>
 					</div>
-					<div>
+					<div id="table_div">
 							<h2>{{ mars.News_p }}</h2>
 					</div>
 			</div>
@@ -86,59 +100,19 @@
 			</div>
 
 		</div>
-		<div class="col-xs-12 col-sm-12 col-md-12" >
-				<h3>Planet Information</h3>
-				  <table border="1" class="dataframe" align="center">
-						  <thead>
-							<tr style="text-align: right;">
-							  <th></th>
-							  <th>Value</th>
-							</tr>
-							<tr>
-							  <th>Planet Data Type</th>
-							  <th></th>
-							</tr>
-						  </thead>
-						  <tbody>
-							<tr>
-							  <th>Equatorial Diameter:</th>
-							  <td>6,792 km</td>
-							</tr>
-							<tr>
-							  <th>Polar Diameter:</th>
-							  <td>6,752 km</td>
-							</tr>
-							<tr>
-							  <th>Mass:</th>
-							  <td>6.42 x 10^23 kg (10.7% Earth)</td>
-							</tr>
-							<tr>
-							  <th>Moons:</th>
-							  <td>2 (Phobos &amp; Deimos)</td>
-							</tr>
-							<tr>
-							  <th>Orbit Distance:</th>
-							  <td>227,943,824 km (1.52 AU)</td>
-							</tr>
-							<tr>
-							  <th>Orbit Period:</th>
-							  <td>687 days (1.9 years)</td>
-							</tr>
-							<tr>
-							  <th>Surface Temperature:</th>
-							  <td>-153 to 20 �C</td>
-							</tr>
-							<tr>
-							  <th>First Record:</th>
-							  <td>2nd millennium BC</td>
-							</tr>
-							<tr>
-							  <th>Recorded By:</th>
-							  <td>Egyptian astronomers</td>
-							</tr>
-						  </tbody>
-						</table>
-		</div>
+
+		<div class="row">
+			<div class ="col-xs-12 col-sm-6 col-md-6" id ="table">
+					<h2 class = " second_row_headers" >Mars Planet Informations</h2>
+				<div id="information_table">{{ mars.Html_table | safe }}</div>
+				
+			</div>
+
+			<div class ="col-xs-12 col-sm-6 col-md-6">
+				<h2 class = "second_row_headers">Mars Featured Image</h2>
+				<img id= "featured_image" src="{{ mars.Featured_image_url }}"  alt="Mountain View">
+				
+			</div>
 
 		<div class="row">
 			<div class ="col-xs-12 col-sm-6 col-md-6">
@@ -169,21 +143,7 @@
 	
 			</div>
 
-			<div class="row">
-					<div class ="col-xs-12 col-sm-6 col-md-6">
-						<img class= "hemisphere_img" src="{{ mars.list_of_hemisphere_image_urls[2]['img_url'] }}"  alt="Mountain View">
-						<h2>{{ mars.list_of_hemisphere_image_urls[2]["title"] }}</h2>
-					</div>
 		
-					<div class ="col-xs-12 col-sm-6 col-md-6">
-						<img class= "hemisphere_img" src="{{ mars.Featured_image_url[0] }}"  alt="Mountain View">
-						<h2>{{ mars.Featured_image_url[0] }}</h2>
-					</div>
-		
-		
-				</div>
-
-
 
 </body>
 </html>

@@ -9,6 +9,7 @@ from flask import render_template, redirect
 from flask import Flask
 app = Flask(__name__)
 import requests
+import time as time
 
 # Initialize PyMongo to work with MongoDBs
 client = pymongo.MongoClient('localhost', 27017)
@@ -45,11 +46,18 @@ def scrape():
     soup = BeautifulSoup(html, 'html.parser')
 
     # getting images urls
-    image = soup.find_all('a', class_='button fancybox')
-    featured_image = image[0]["data-fancybox-href"]
+    # image = soup.find_all('a', class_='button fancybox')
+    # featured_image = image[0]["data-fancybox-href"]
+    browser.find_by_id("full_image").click()
+    time.sleep(4)
+    browser.find_link_by_partial_text("more info").click()
+    time.sleep(2)
+    html = browser.html
+    soup = BeautifulSoup(html,"html.parser")
+    featured_image = soup.find("figure", class_="lede").find("img")["src"]
 
     # creating url feastured url
-    featured_image_url = ['https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars' + "/spaceimages/images/mediumsize/PIA14712_ip.jpg"]
+    featured_image_url = 'https://www.jpl.nasa.gov' + featured_image
 
     # url for twitter to get weather data
     url = 'https://twitter.com/marswxreport?lang=en'
@@ -65,15 +73,15 @@ def scrape():
     url = 'http://space-facts.com/mars/'
 
     # getting data to a table 
-    tables = pd.read_html(url)
+    tables = pd.read_html(url)[0]
 
     # putting data in pandas data frame and then expoting to html file
-    df = tables[0]
-    df = df.rename({0: 'Planet Data Type', 1: 'Value'}, axis=1).set_index('Planet Data Type')
-    df.to_html("mars_information_table.html")
+    
+    df = tables.rename({0: 'Planet Data Type', 1: 'Value'}, axis=1).set_index('Planet Data Type')
+    # df.to_html("mars_information_table.html")
 
     # configuring html table 
-    html_table = df.to_html(index=False)
+    html_table = df.to_html()
     html_table = html_table.replace('\n', '')
 
     #url to astrogeology website
