@@ -8,6 +8,9 @@ Flask-Cors==3.0.3
 Flask-PyMongo==0.5.1
 request==2018.11.20
 requests==2.18.4
-
-
+beautifulsoup4==4.6.0
+gunicorn==19.9.0
+appnope==0.1.0
+click==6.7
+decorator==4.1.2
 
