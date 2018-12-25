@@ -1,7 +1,8 @@
 # Import Dependencies
 import pandas as pd
 from splinter import Browser
-from bs4 import BeautifulSoup
+# from bs4 import BeautifulSoup
+from beautifulsoup4 import BeautifulSoup
 from selenium import webdriver
 import pymongo
 from flask import render_template, redirect
@@ -9,6 +10,7 @@ from flask import Flask
 app = Flask(__name__)
 import requests
 import time as time
+
 
 # Initialize PyMongo to work with MongoDBs
 client = pymongo.MongoClient('localhost', 27017)
