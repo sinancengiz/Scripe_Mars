@@ -101,9 +101,7 @@ pymongo==3.6.1
 pyodbc==4.0.22
 pyOpenSSL==17.5.0
 pyparsing==2.2.0
-pypiwin32==223
-PySocks==1.6.7
-pytest==3.3.2
+
 python-dateutil==2.7.0
 pytz==2018.3
 PyWavelets==0.5.2
