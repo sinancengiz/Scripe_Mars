@@ -6,14 +6,19 @@ from selenium import webdriver
 import pymongo
 from flask import render_template, redirect
 from flask import Flask
-app = Flask(__name__)
 import requests
 import time as time
 
 
 # Initialize PyMongo to work with MongoDBs
-client = pymongo.MongoClient('localhost', 27017)
+client = pymongo.MongoClient("mongodb://localhost:27017/")
 db = client['mars_database']
+
+
+#################################################
+# Flask Setup
+#################################################
+app = Flask(__name__)
 
 #app route to scrape
 @app.route('/scrape')
@@ -28,12 +33,13 @@ def scrape():
 
     # initilize browser
     html = browser.html
+    time.sleep(4)
     soup = BeautifulSoup(html, 'html.parser')
-   
+    time.sleep(4)
     #getting header and paragraf data
     header = soup.find('div', class_='content_title')
     paragraf = soup.find('div', class_='article_teaser_body')
-   
+    time.sleep(2)
     #striping the texts
     news_title = header.text.strip()
     news_p = paragraf.text.strip()
@@ -62,12 +68,15 @@ def scrape():
     # url for twitter to get weather data
     url = 'https://twitter.com/marswxreport?lang=en'
     browser.visit(url)
+    time.sleep(4)
+    #browser.find_link_by_partial_text("MarsWxReport").click()
+    time.sleep(4)
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
-    results = results = soup.find('p', class_='TweetTextSize TweetTextSize--normal js-tweet-text tweet-text')
-
+    results = soup.findAll('div', class_="css-901oao r-jwli3a r-1qd0xha r-a023e6 r-16dba41 r-ad9z0x r-bcqeeo r-bnwqim r-qvutc0")
+    span = results[0].find('span')
     # the most recent mars weather data
-    mars_weather = mars_weather = results.text.strip()
+    mars_weather = span.text.strip()
 
     #url to space facts website
     url = 'http://space-facts.com/mars/'
@@ -146,7 +155,8 @@ def getData():
     data = db.posts.find()[0]
     #render index.html
     return render_template('index.html', mars=data)
+
 #run the app
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True , port = 5000)
 
