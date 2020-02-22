@@ -10,9 +10,13 @@ import requests
 import time as time
 
 def scripe_func():
+    GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
+    CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
+
+
     # putting executable_path
-    executable_path = {'executable_path': 'chromedriver'}
-    browser = Browser('chrome', **executable_path, headless=False)
+    executable_path = {'executable_path': CHROMEDRIVER_PATH}
+    browser = Browser(GOOGLE_CHROME_PATH, **executable_path, headless=False)
 
     # url for mars nasa website
     url = 'https://mars.nasa.gov/news/'
