@@ -17,7 +17,7 @@ def scripe_func():
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--no-sandbox")
-    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+    browser = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 
 
     # putting executable_path
@@ -26,10 +26,10 @@ def scripe_func():
 
     # url for mars nasa website
     url = 'https://mars.nasa.gov/news/'
-    driver.get(url)
+    browser.get(url)
     time.sleep(4)
     # initilize browser
-    html = driver.html
+    html = browser.get(url)
     time.sleep(2)
     soup = BeautifulSoup(html, 'html.parser')
     time.sleep(2)
