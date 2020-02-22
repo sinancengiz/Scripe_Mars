@@ -9,21 +9,27 @@ from flask import Flask
 import requests
 import time as time
 
+
 def scripe_func():
-    GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
-    CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
+    import os
+    chrome_options =webdriver.ChromeOptions()
+    chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--no-sandbox")
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 
 
     # putting executable_path
-    executable_path = {'executable_path': CHROMEDRIVER_PATH}
-    browser = Browser(GOOGLE_CHROME_PATH, **executable_path, headless=False)
+    #executable_path = {'executable_path': "chromedriver"}
+    #browser = Browser("chrome", **executable_path, headless=False)
 
     # url for mars nasa website
     url = 'https://mars.nasa.gov/news/'
-    browser.visit(url)
+    driver.get(url)
     time.sleep(4)
     # initilize browser
-    html = browser.html
+    html = driver.html
     time.sleep(2)
     soup = BeautifulSoup(html, 'html.parser')
     time.sleep(2)
