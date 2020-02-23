@@ -12,24 +12,22 @@ import time as time
 
 def scripe_func():
     import os
-    chrome_options =webdriver.ChromeOptions()
+    chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--no-sandbox")
-    browser = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-
 
     # putting executable_path
-    #executable_path = {'executable_path': "chromedriver"}
-    #browser = Browser("chrome", **executable_path, headless=False)
+    executable_path = {'executable_path': os.environ.get("CHROMEDRIVER_PATH")}
+    browser = Browser("chrome", **executable_path, headless=False)
 
-    # url for mars nasa website
+    # url for mars nasa website 
     url = 'https://mars.nasa.gov/news/'
-    browser.get(url)
+    browser.visit(url)
     time.sleep(4)
     # initilize browser
-    html = browser.get(url)
+    html = browser.html
     time.sleep(2)
     soup = BeautifulSoup(html, 'html.parser')
     time.sleep(2)
