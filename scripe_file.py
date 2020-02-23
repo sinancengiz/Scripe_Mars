@@ -3,23 +3,14 @@ import pandas as pd
 from splinter import Browser
 from bs4 import BeautifulSoup
 from selenium import webdriver
-import pymongo
 from flask import render_template, redirect
 from flask import Flask
 import requests
 import time as time
 
-
 def scripe_func():
-    import os
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-    chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("--no-sandbox")
-
     # putting executable_path
-    executable_path = {'executable_path': os.environ.get("CHROMEDRIVER_PATH")}
+    executable_path = {'executable_path': "chromedriver"}
     browser = Browser("chrome", **executable_path, headless=False)
 
     # url for mars nasa website 
