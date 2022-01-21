@@ -16,7 +16,7 @@ Flask-Cors==3.0.3
 
 gunicorn==19.8.1
 
-ipython==6.2.1
+ipython==7.16.3
 ipython-genutils==0.2.0
 
 Markdown==2.6.11
