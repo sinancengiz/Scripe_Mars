@@ -1,8 +1,8 @@
-##Description & Motivation:
+**Description & Motivation:**
 
-##Acceptance Criteria: 
+**Acceptance Criteria:** 
 
-##Root Cause:
+**Root Cause:**
 
 ##Types of changes:
 What types of changes does your code introduce?
