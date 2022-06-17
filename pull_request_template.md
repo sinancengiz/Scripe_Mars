@@ -1,12 +1,10 @@
-**Description & Motivation:**
+##Description & Motivation:
 
-**Acceptance Criteria:** 
+##Acceptance Criteria: 
 
-**Root Cause:**
+##Root Cause:
 
-**Screenshots (if UI work is involved):** 
-
-**Types of changes:**
+##Types of changes:
 What types of changes does your code introduce?
 _Put an `x` in the boxes that apply_
 
@@ -15,4 +13,6 @@ _Put an `x` in the boxes that apply_
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
 - [ ] Documentation Update (if none of the other choices apply)
 
-**Further comments:**
+##Further comments:
+
+##Screenshots (if UI work is involved): 
